@@ -102,5 +102,5 @@ module Application =
 
     let create (input: Input) (output: Output) =
         fun () ->
-            output "Please enter a number between 1 and 4000."
+            output "Please enter a number between 1 and 4000: "
             input () |> execute |> viewResult |> output
