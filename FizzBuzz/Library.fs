@@ -26,12 +26,12 @@ module Validator =
     module ValidNumber =
         let value (ValidNumber number) = number
 
-        let ofNumber number =
+        let fromInt number =
             match 1 <= number && number <= 4000 with
             | false -> None
             | true -> Some(ValidNumber number)
 
-module Evaluator =
+module FizzBuzz =
     open Validator
 
     let eval number =
@@ -44,8 +44,7 @@ module Evaluator =
             | (n, _, _) -> string n)
         |> String.concat "\n"
 
-
-module Domain =
+module Executor =
     open Validator
 
     type NumberParser = string -> int option
@@ -61,10 +60,10 @@ module Domain =
 
     type FizzBuzzExecutor = string -> Result<string, Error>
 
-    let execute (parseNumber: NumberParser)
-                (validateNumber: NumberValidator)
-                (evaluateFizzBuzz: FizzBuzzEvaluator)
-                : FizzBuzzExecutor =
+    let build (parseNumber: NumberParser)
+              (validateNumber: NumberValidator)
+              (evaluateFizzBuzz: FizzBuzzEvaluator)
+              : FizzBuzzExecutor =
         let parseNumber input =
             input
             |> parseNumber
@@ -85,14 +84,14 @@ module Domain =
 
 
 module Application =
-    open Domain
+    open Executor
     open Validator
 
     type Input = unit -> string
     type Output = string -> unit
 
     let execute =
-        Domain.execute Parser.tryParse ValidNumber.ofNumber Evaluator.eval
+        Executor.build Parser.tryParse ValidNumber.fromInt FizzBuzz.eval
 
     let viewResult =
         function
@@ -105,4 +104,3 @@ module Application =
         fun () ->
             output "Please enter a number between 1 and 4000."
             input () |> execute |> viewResult |> output
-            
