@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FizzBuzzGuerilla", "FizzBuzzGuerilla\FizzBuzzGuerilla.fsproj", "{66E911BF-7F4F-4070-B233-EC721AFBA6ED}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FizzBuzzGuerrilla", "FizzBuzzGuerrilla\FizzBuzzGuerrilla.fsproj", "{66E911BF-7F4F-4070-B233-EC721AFBA6ED}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FizzBuzz", "FizzBuzz\FizzBuzz.fsproj", "{FD923F8E-67FA-49E0-9A7C-24C3E53C783A}"
 EndProject
